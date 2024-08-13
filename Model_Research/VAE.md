@@ -22,13 +22,15 @@ VAE can be effectively used for image colorization tasks, where the goal is to p
 - **Diversity in Output:** By sampling different latent vectors, VAEs can produce diverse colorizations for the same grayscale image, which is particularly useful in cases where multiple plausible colorizations exist.
 - **Latent Space Regularization:** The regularized latent space learned by VAEs can capture a smooth and continuous manifold of possible colorizations, making it easier to generate realistic and coherent color images.
 
-### **Comparison with Other Models for Colorization:**
+### **Comparison of Image Colorization Techniques:**
 
-- **Autoencoder:** A basic autoencoder could also be used for image colorization, but it lacks the ability to generate diverse colorizations since it is deterministic in nature. This limitation can be overcome by the probabilistic nature of VAE.
-  
-- **GAN:** GANs are also popular for image colorization due to their ability to generate sharp and realistic images. However, GANs require careful balancing during training to avoid issues like mode collapse. Unlike VAEs, GANs can sometimes produce less diverse outputs, depending on the training dynamics.
-  
-- **UNet:** UNet is typically used for segmentation tasks but has been adapted for colorization. It excels in tasks where spatial information is critical due to its skip connections, which preserve high-resolution details. However, it might not produce as diverse colorizations as VAEs or GANs.
+| **Aspect**           | **VAE**                              | **CNN**                              | **Autoencoder**                     | **GAN**                               | **UNet**                             |
+|----------------------|--------------------------------------|--------------------------------------|-------------------------------------|---------------------------------------|--------------------------------------|
+| **Diversity**        | High - Generates diverse colorizations by sampling from a probabilistic latent space. | Low - Produces deterministic outputs based on learned features. | Low - Focuses on reconstructing a single, deterministic output. | High - Can generate realistic and varied colorizations through adversarial training. | Moderate - Produces accurate but often less diverse outputs. |
+| **Realism**          | Moderate - Balances between diversity and realism, may require fine-tuning for high-quality results. | Moderate - Can achieve realism through deep feature extraction but lacks generative capabilities. | Moderate - Produces realistic outputs based on input reconstruction. | High - GANs are known for producing highly realistic outputs, but training can be challenging. | High - Well-suited for tasks requiring detailed and realistic outputs. |
+| **Complexity**       | High - Requires balancing reconstruction and KL divergence losses. | Moderate - Simpler to implement but may require large datasets for accurate feature learning. | Low - Simpler architecture, easier to train. | High - Complex training process with adversarial networks. | Moderate - Requires careful design to maintain spatial information. |
+| **Application**      | Best for generating multiple plausible colorizations for a single image. | Suitable for straightforward, deterministic colorization tasks. | Good for basic colorization tasks where a single output is sufficient. | Ideal for scenarios requiring high realism, such as artistic applications. | Suitable for tasks needing high detail and accuracy, such as medical imaging. |
+| **Training Data**    | Requires diverse data to effectively learn the colorization manifold. | Large labeled datasets improve accuracy but do not contribute to diversity. | Requires pairs of grayscale and color images. | Needs large datasets and careful balancing to avoid overfitting or mode collapse. | Works well with data where spatial information is crucial. |
 
 ### **Referencing Multiple Papers:**
 
